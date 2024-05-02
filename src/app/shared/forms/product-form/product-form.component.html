@@ -105,14 +105,14 @@
         @if(!edit) {
         <button class="button button--secondary" type="button" (click)="resetForm()">Reiniciar</button>
         }
-        <button class="button button--primary" type="submit">{{ edit ? 'Actualizar' :
+        <button class="button button--primary" [disabled]="productForm.invalid" type="submit">{{ edit ? 'Actualizar' :
             'Enviar' }}</button>
     </div>
 </form>
 
 @if(show_success !== '') {
 <app-modal [text]="show_success">
-    <button class="button button--primary" [routerLink]="['/']">Ir al listado</button>
+    <button class="button button--secondary" [routerLink]="['/']">Ir al listado</button>
     @if(!edit) {
     <button class="button button--primary" (click)="show_success = ''; resetForm()">Cargar otro producto</button>
     }

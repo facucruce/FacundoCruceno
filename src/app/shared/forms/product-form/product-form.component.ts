@@ -48,6 +48,8 @@ export class ProductFormComponent implements OnInit {
       const formattedDateRevision = dateRevision.toISOString().substring(0, 10);
 
       this.logoFile = this.product.logo;
+      this.productForm.get('logo')?.clearValidators();
+      this.productForm.get('logo')?.updateValueAndValidity();
 
       this.productForm.patchValue({
         id: this.product.id,
@@ -126,6 +128,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   editProduct(formData: Product) {
+    formData.logo = this.logoFile;
     this.productsService.putProduct(formData).then(response => {
       this.show_success = 'Producto editado correctamente';
     })
