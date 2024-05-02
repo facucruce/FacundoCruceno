@@ -1,27 +1,28 @@
-# Banco
+# Facundo Cruceño
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
+## Descripción
+Esta es una aplicación desarrollada en Angular para visualizar los diferentes productos financieros ofertados por la Institución Banco. La aplicación cuenta con pantallas para la carga, edición y eliminación de productos financieros.
 
-## Development server
+## Instalación
+Para instalar y ejecutar el proyecto, sigue estos pasos:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1. Clona este repositorio en tu máquina local.
+2. Asegúrate de tener Node.js y npm instalados.
+3. Ejecuta el siguiente comando en la raíz del proyecto para instalar las dependencias:
+    npm install
+4. Una vez instaladas las dependencias, puedes ejecutar la aplicación con el siguiente comando:
+    ng serve --proxy-config proxy.conf.json
 
-## Code scaffolding
+## Estructura del Proyecto
+El proyecto está organizado de la siguiente manera:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Core: Contiene las funcionalidades que no tienen vistas y que se comparten en toda la aplicación, como los modelos y los servicios.
 
-## Build
+Products: Es el módulo principal que contiene las rutas y las pantallas relacionadas con los productos financieros.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Shared: Contiene los componentes que se comparten entre diferentes partes de la aplicación, como el formulario y un modal genérico.
 
-## Running unit tests
+## Pruebas Unitarias
+Se han incluido pruebas unitarias para cada componente utilizando Jest. Para ejecutar estas pruebas, utiliza el siguiente comando:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+npm run test
