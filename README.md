@@ -17,7 +17,9 @@ Para instalar y ejecutar el proyecto, sigue estos pasos:
 El proyecto está organizado de la siguiente manera:
 
 Core: Contiene las funcionalidades que no tienen vistas y que se comparten en toda la aplicación, como los modelos y los servicios.
+
 Products: Es el módulo principal que contiene las rutas y las pantallas relacionadas con los productos financieros.
+
 Shared: Contiene los componentes que se comparten entre diferentes partes de la aplicación, como el formulario y un modal genérico.
 
 ## Pruebas Unitarias
