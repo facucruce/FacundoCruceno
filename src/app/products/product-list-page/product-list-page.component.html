@@ -1,0 +1,62 @@
+<div class="container_header">
+    <input class="input_small" type="text" placeholder="Buscar" (input)="search($event)">
+    <button class="button button--primary" [routerLink]="['/create']">Agregar</button>
+</div>
+<div class="container_content">
+    <div class="container_table">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Logo</th>
+                    <th>Nombre del producto</th>
+                    <th>Descripción</th>
+                    <th>Fecha de liberación</th>
+                    <th>Fecha de restauración</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (product of filteredProducts.slice(0, productsToShow); track product; let i = $index) {
+                <tr>
+                    <td><img [src]="product.logo" alt="Logo"></td>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.date_release | date: 'd/M/yyyy' }}</td>
+                    <td>{{ product.date_revision | date: 'd/M/yyyy' }}</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="dropdown-toggle" (click)="toggleDropdown(i)" type="button">
+                                <fa-icon [icon]="showDropdown[i] ? iconXmark : iconEllipsisVertical"></fa-icon>
+                            </button>
+                            @if(showDropdown[i]) {
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item" [routerLink]="['/edit', product.id]">Editar</button>
+                                <button class="dropdown-item"
+                                    (click)="modalDelete(product); toggleDropdown(i)">Eliminar</button>
+                            </div>
+                            }
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="table_footer">
+        <p>{{ products.length }} Resultados</p>
+        <div>
+            <select (change)="onChangeQuantity($event)">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+@if(show_delete !== '') {
+<app-modal [text]="show_delete">
+    <button class="button button--secondary" (click)="show_delete = ''; productToDelete = null">Cancelar</button>
+    <button class="button button--primary" (click)="deleteProduct(productToDelete)">Confirmar</button>
+</app-modal>
+}

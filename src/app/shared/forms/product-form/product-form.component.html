@@ -1,0 +1,126 @@
+<form [formGroup]="productForm" (ngSubmit)="save()">
+    <div class="container">
+        <div class="column">
+            <div class="input_container">
+                <label for="id">ID*</label>
+                <input type="text" id="id" formControlName="id" [readonly]="edit">
+                @if(productForm.get('id')?.errors && (productForm.get('id')?.dirty || productForm.get('id')?.touched)){
+                <div class="errors">
+                    @if(productForm.get('id')?.errors?.['required']) {
+                    <div>
+                        Este campo es requerido!
+                    </div>
+                    }
+                    @if(productForm.get('id')?.errors?.['minlength']){
+                    <div>
+                        Debe tener al menos 3 caracteres!
+                    </div>
+                    }
+                    @if(productForm.get('id')?.errors?.['maxlength']){
+                    <div>
+                        No puede tener más de 10 caracteres!
+                    </div>
+                    }
+                </div>
+
+                }
+            </div>
+
+            <div class="input_container">
+                <label for="name">Nombre*</label>
+                <input type="text" id="name" formControlName="name">
+                @if(productForm.get('name')?.errors && (productForm.get('name')?.dirty ||
+                productForm.get('name')?.touched)){
+                <div class="errors">
+                    @if(productForm.get('name')?.errors?.['required']) {
+                    <div>Este campo es requerido!</div>
+                    }
+                    @if(productForm.get('name')?.errors?.['minlength']) {
+                    <div>Debe tener al menos 5 caracteres!</div>
+                    }
+                    @if(productForm.get('name')?.errors?.['maxlength']) {
+                    <div>No puede tener más de 100 caracteres!</div>
+                    }
+                </div>
+                }
+            </div>
+
+            <div class="input_container">
+                <label for="description">Descripción*</label>
+                <input type="text" id="description" formControlName="description">
+                @if(productForm.get('description')?.errors && (productForm.get('description')?.dirty ||
+                productForm.get('description')?.touched)) {
+                <div class="errors">
+                    @if(productForm.get('description')?.errors?.['required']) {
+                    <div>Este campo es requerido!</div>
+                    }
+                    @if(productForm.get('description')?.errors?.['minlength']) {
+                    <div>Debe tener al menos 10 caracteres!</div>
+                    }
+                    @if(productForm.get('description')?.errors?.['maxlength']) {
+                    <div>No puede tener más de 200 caracteres!</div>
+                    }
+                </div>
+                }
+            </div>
+        </div>
+        <div class="column">
+            <div class="input_container">
+                <label for="logo">Logo*</label>
+                <input type="file" id="logo" formControlName="logo" (change)="onFileChange($event)">
+                @if(logoFile) {
+                <span>{{logoFile}}</span>
+                }
+                @if(productForm.get('logo')?.errors && (productForm.get('logo')?.dirty ||
+                productForm.get('logo')?.touched)) {
+
+                <div class="errors">
+                    @if(productForm.get('logo')?.errors?.['required']) {
+                    <div>Este campo es requerido!</div>
+                    }
+                </div>
+                }
+            </div>
+
+            <div class="input_container">
+                <label for="date_release">Fecha de Liberación*</label>
+                <input type="date" id="date_release" [min]="minDateISOString" formControlName="date_release"
+                    (change)="setDateRelease()">
+                @if(productForm.get('date_release')?.errors && (productForm.get('date_release')?.dirty ||
+                productForm.get('date_release')?.touched)) {
+                <div class="errors">
+                    @if(productForm.get('date_release')?.errors?.['required']) {
+                    <div>Este campo es requerido!</div>
+                    }
+                </div>
+                }
+            </div>
+            <div class="input_container">
+                <label for="date_revision">Fecha de Revisión*</label>
+                <input type="date" id="date_revision" formControlName="date_revision" [readonly]="true">
+            </div>
+        </div>
+    </div>
+    <div class="buttons">
+        @if(!edit) {
+        <button class="button button--secondary" type="button" (click)="resetForm()">Reiniciar</button>
+        }
+        <button class="button button--primary" type="submit">{{ edit ? 'Actualizar' :
+            'Enviar' }}</button>
+    </div>
+</form>
+
+@if(show_success !== '') {
+<app-modal [text]="show_success">
+    <button class="button button--primary" [routerLink]="['/']">Ir al listado</button>
+    @if(!edit) {
+    <button class="button button--primary" (click)="show_success = ''; resetForm()">Cargar otro producto</button>
+    }
+</app-modal>
+}
+
+@if(show_error) {
+<app-modal text="Hubo un error al cargar el producto">
+    <button class="button button--primary" (click)="show_error = false;">Aceptar</button>
+</app-modal>
+}

@@ -1,0 +1,21 @@
+.table {
+    font-size: 12px;
+    border-spacing: 2px;
+    border-collapse: collapse;
+    width: 100%;
+
+    thead {
+        background: $background-grey-light;
+    }
+
+    tr {
+        border-bottom: 2px solid $border-grey-light;
+
+        th,
+        td {
+            text-align: left;
+            padding: 12px;
+            min-width: 130px;
+        }
+    }
+}

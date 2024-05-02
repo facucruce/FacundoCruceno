@@ -1,0 +1,17 @@
+form {
+    max-width: 610px;
+    margin: 0 auto;
+
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-gap: 10px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        align-items: center;
+    }
+}

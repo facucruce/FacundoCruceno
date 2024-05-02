@@ -1,0 +1,18 @@
+.button {
+    font-weight: 700;
+    font-family: "open_sans";
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 12px;
+    border: none;
+    cursor: pointer;
+
+    &.button--primary {
+        background-color: $background-yellow;
+
+        &:hover {
+            background-color: $background-yellow-accent;
+        }
+    }
+
+}

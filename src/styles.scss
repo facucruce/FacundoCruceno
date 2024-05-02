@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'roboto_slab';
+    src: url(./assets/fonts/RobotoSlab-Medium.ttf) format('TrueType');
+}
+
+@font-face {
+    font-family: 'open_sans';
+    src: url(./assets/fonts/OpenSans.ttf) format('TrueType');
+}
+
+
+@import 'assets/colors';
+@import 'assets/tables.scss';
+@import 'assets/inputs.scss';
+@import 'assets/buttons.scss';
+
+body {
+    margin: 0;
+    font-family: 'open_sans';
+}

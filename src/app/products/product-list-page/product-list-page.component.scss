@@ -1,0 +1,63 @@
+@import '../../../assets/colors';
+
+.container_header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.container_content {
+    background-color: $background-white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+
+    .container_table {
+        overflow-x: auto;
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+
+            .dropdown-toggle {
+                padding: 5px 10px;
+                font-size: 16px;
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            .dropdown-menu {
+                position: absolute;
+                top: 50%;
+                right: 80%;
+                background-color: $background-white;
+                border: 1px solid $border-grey-light;
+                z-index: 1;
+
+                .dropdown-item {
+                    display: block;
+                    padding: 5px 10px;
+                    border: none;
+                    text-align: left;
+                    cursor: pointer;
+                    background: none;
+                    width: 100%;
+                }
+
+            }
+        }
+
+    }
+
+    .table_footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        p {
+            font-weight: 600;
+            font-size: 12px;
+        }
+    }
+}

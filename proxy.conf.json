@@ -1,0 +1,10 @@
+{
+    "/api": {
+        "target": "https://tribu-ti-staffing-desarrollo-afangwbmcrhucqfh.z01.azurefd.net",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api": ""
+        }
+    }
+}

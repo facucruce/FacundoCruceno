@@ -1,0 +1,27 @@
+@import '../../../assets/colors';
+
+.global_container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+
+    .header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex: 0 1 auto;
+
+        h1 {
+            font-family: 'roboto_slab';
+            font-size: 20px;
+            color: $font-blue;
+        }
+    }
+
+    .container {
+        flex: 1 1 auto;
+        background-color: $background-blue-light;
+        padding: 20px;
+    }
+}
